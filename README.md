@@ -1,6 +1,6 @@
 # Valley Clear Analytics — Portfolio Page
 
-A standalone project page showcasing the Valley Clear marketing analytics dashboard (real data) and the Q3 2026 growth projection (modeled data), built in Splunk.
+A standalone project page showcasing the Valley Clear marketing analytics dashboard (real data) and the following 2 months(July & August) growth projection (modeled data), built in Splunk.
 
 ## What's in this folder
 - `index.html` — the full page (self-contained, styles included)
