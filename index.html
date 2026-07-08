@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valley Clear Analytics — Austin Lopez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2F4F0;
+    --surface: #FFFFFF;
+    --ink: #171E1B;
+    --muted: #5B665F;
+    --amber: #C96A28;
+    --amber-soft: #F3E3D3;
+    --teal: #1B6B63;
+    --teal-soft: #DCEAE8;
+    --line: #DBE1DC;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  a { color: inherit; }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    padding: 88px 0 40px;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 24px;
+    max-width: 15ch;
+  }
+
+  .hero-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 36px 0 8px;
+  }
+
+  .hero-stat .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(64px, 12vw, 108px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--amber);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 26ch;
+    padding-bottom: 10px;
+  }
+
+  .hero-sub {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 58ch;
+    margin-top: 18px;
+  }
+
+  /* route line signature */
+  .route {
+    margin: 48px 0 8px;
+    width: 100%;
+    height: 40px;
+    display: block;
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+
+  section.block {
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .section-head h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .tag.live { background: var(--amber-soft); color: var(--amber); }
+  .tag.modeled { background: var(--teal-soft); color: var(--teal); }
+
+  .section-desc {
+    color: var(--muted);
+    max-width: 62ch;
+    margin: 14px 0 32px;
+  }
+
+  /* ---------- IMAGE GALLERY ---------- */
+
+  .shot {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .shot-caption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--muted);
+    padding: 10px 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ---------- RATIONALE LIST ---------- */
+
+  .rationale {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 30px;
+    margin-top: 8px;
+  }
+
+  .rationale h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    margin: 0 0 18px;
+  }
+
+  .rationale dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 14px 20px;
+  }
+
+  .rationale dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--ink);
+    padding-top: 2px;
+  }
+
+  .rationale dd {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14.5px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rationale dd:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+  /* ---------- STACK / BUILD NOTES ---------- */
+
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 0;
+  }
+
+  .stack-tags span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 7px 14px;
+    border-radius: 100px;
+    color: var(--ink);
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer {
+    padding: 48px 0 80px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .links {
+    display: flex;
+    gap: 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+  }
+
+  footer .links a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber);
+    color: var(--ink);
+    padding-bottom: 1px;
+  }
+
+  footer .fine {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 640px) {
+    .rationale dl { grid-template-columns: 1fr; }
+    .rationale dt { padding-top: 12px; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Valley Clear — Marketing Analytics</div>
+    <h1>Turning flyer routes and door-to-door leads into a real cost-per-acquisition model.</h1>
+
+    <div class="hero-stat">
+      <span class="num">15.5×</span>
+      <span class="label">ROI on the best-performing channel — measured from 49 real Arizona jobs, not a sample dataset.</span>
+    </div>
+
+    <p class="hero-sub">
+      I run Valley Clear, a window &amp; solar-panel cleaning business, across the Phoenix metro area. This year I started tracking every job's lead source and built a Splunk dashboard to find out which marketing channel was actually worth the spend — then used the same discipline to model what a new channel mix could look like next quarter.
+    </p>
+
+    <svg class="route" viewBox="0 0 880 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 20 C 120 20, 140 4, 240 8 S 380 34, 460 20 S 600 4, 700 12 S 820 30, 880 18"
+            stroke="var(--ink)" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="1 7" stroke-linecap="round"/>
+      <circle cx="0" cy="20" r="3.5" fill="var(--amber)"/>
+      <circle cx="240" cy="8" r="3.5" fill="var(--ink)" fill-opacity="0.35"/>
+      <circle cx="460" cy="20" r="3.5" fill="var(--ink)" fill-opacity="0.35"/>
+      <circle cx="700" cy="12" r="3.5" fill="var(--ink)" fill-opacity="0.35"/>
+      <circle cx="880" cy="18" r="3.5" fill="var(--teal)"/>
+    </svg>
+  </div>
+
+  <section class="block">
+    <div class="section-head">
+      <h2>What actually happened</h2>
+      <span class="tag live">Live data</span>
+    </div>
+    <p class="section-desc">
+      49 completed Arizona jobs this year, tagged by lead channel and cleaned into a queryable dataset. Cost per acquisition is calculated per channel — paid campaigns show real spend, organic channels (referrals, my own door-to-door) show $0 cost rather than a misleading number.
+    </p>
+
+    <div class="shot">
+      <img src="images/01-arizona-top.png" alt="Valley Clear Marketing ROI Dashboard showing 49 total jobs, $7,975 in revenue, $557.03 in tracked marketing spend, and Blue flyer as the best-performing channel at 15.53x ROI, with a full channel performance table below.">
+      <div class="shot-caption">Headline metrics + full channel performance table — jobs, revenue, CPA, ROI, and profit by channel.</div>
+    </div>
+
+    <div class="shot">
+      <img src="images/02-arizona-charts.png" alt="Four charts: revenue by channel, cost per acquisition by channel, jobs share by channel as a pie chart, and average job value by channel.">
+      <div class="shot-caption">Revenue, CPA, job share, and average job value — broken out by channel.</div>
+    </div>
+
+    <div class="shot">
+      <img src="images/03-arizona-trend.png" alt="Stacked column chart showing monthly revenue by channel from November 2025 through July 2026.">
+      <div class="shot-caption">Monthly revenue trend by channel, November 2025 – July 2026.</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <h2>What could happen next</h2>
+      <span class="tag modeled">Modeled, not real</span>
+    </div>
+    <p class="section-desc">
+      A separate, clearly-labeled projection — not blended with the real numbers above. It models a new double-sided flyer, expanded door-to-door canvassing, and a first Meta ads campaign, with every input tied back to either this year's real conversion rates or a cited industry benchmark.
+    </p>
+
+    <div class="shot">
+      <img src="images/04-projected-top.png" alt="Projected dashboard showing 53 total projected jobs, $12,375 in projected revenue, $1,395.90 in projected marketing spend, V3 flyer as the most efficient projected channel at 15.16x ROI, a full channel table, and revenue/CPA charts by channel.">
+      <div class="shot-caption">Projected headline metrics, channel table, and revenue/CPA charts.</div>
+    </div>
+
+    <div class="shot">
+      <img src="images/05-projected-rationale.png" alt="Projected jobs share pie chart, average job value chart, and a written rationale explaining the assumptions behind the V3 flyer, Meta ad, d2d, and customer referral projections.">
+      <div class="shot-caption">Jobs share, average job value, and the assumptions behind every number.</div>
+    </div>
+
+    <div class="rationale">
+      <h3>Where each assumption came from</h3>
+      <dl>
+        <dt>V3 flyer</dt>
+        <dd>$421 for 5,000 double-sided flyers. Conversion set at 0.6% — matched to this year's real Fall-flyer conversion rate (15 jobs ÷ 2,500 flyers), not an optimistic guess.</dd>
+        <dt>Meta ad</dt>
+        <dd>$75 CPA against a $225 average ticket — sits inside the real 2026 industry benchmark range for home-services Meta lead gen ($25–$75 CPA).</dd>
+        <dt>d2d</dt>
+        <dd>My own canvassing, done after completed jobs. $0 direct cost, sized at 15% of projected volume.</dd>
+        <dt>Customer referral</dt>
+        <dd>Held at the real historical rate — about one referral a month — rather than assumed to grow.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <h2>How this was built</h2>
+    </div>
+    <p class="section-desc">
+      Job records started as a messy spreadsheet — price, lead source, and notes all mixed into unstructured text. I cleaned and restructured that into fields Splunk could query, then wrote the SPL behind every stat, table, and chart on this page myself: channel-level <code>stats</code> aggregations, <code>eval</code>-based CPA/ROI/profit calculations, and a monthly <code>timechart</code> for the trend view.
+    </p>
+    <div class="stack-tags">
+      <span>Splunk (SPL)</span>
+      <span>SQL</span>
+      <span>Tableau</span>
+      <span>Data cleaning</span>
+      <span>Dashboard design</span>
+    </div>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="../Personal-Profile/">← Back to portfolio</a>
+      <a href="https://www.linkedin.com/in/austin-lopez-b15646375">LinkedIn</a>
+    </div>
+    <div class="fine">Austin Lopez · Valley Clear · Arizona</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
